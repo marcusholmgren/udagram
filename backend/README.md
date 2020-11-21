@@ -25,7 +25,20 @@ Formats the source files with [prettier](https://prettier.io)
 
 The service can be access with a GET request to the `/filteredimage` endpoint with a `image_url` query parameter with a valid URL.
 
+Localhost request
 ```curl
 curl -X GET http://localhost:8082/filteredimage\?image_url\=https://upload.wikimedia.org/wikipedia/commons/b/bd/Golden_tabby_and_white_kitten_n01.jpg \
  -o filtered_image.jpg
 ```
+
+Against the live AWS Elastic Beanstalk instance request
+```
+curl -X GET http://UdagramMarcusDev-env-1.eba-9cmsxvm2.eu-central-1.elasticbeanstalk.com/filteredimage\?image_url\=https://upload.wikimedia.org/wikipedia/commons/b/bd/Golden_tabby_and_white_kitten_n01.jpg \
+ -o filtered_image.jpg
+```
+
+
+## Deployed AWS Elastic Beanstalk
+
+![Deployment Screenshot](./deployment_screenshots/UdagramMarcusDev-2020-11-21.png "Deployment Screenshot")
+

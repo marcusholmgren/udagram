@@ -11,7 +11,7 @@ on:
 
 jobs:
   backend-build:
-    name: Build node backend
+    name: Build The Image Filtering Microservice
     runs-on: ubuntu-latest
     env:
       working-dir: ./backend
@@ -29,3 +29,8 @@ jobs:
       working-directory: ${{ env.working-dir }}
       env:
         CI: true
+    - name: 'Upload The Image Filtering Microservice build artifact'
+        uses: 'actions/upload-artifact@v2'
+          with:
+            name: image-filtering-microservice ${{ matrix.node-version }}
+            path: ${{ github.workspace }}/www/archive.zip

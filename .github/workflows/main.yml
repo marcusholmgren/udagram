@@ -31,6 +31,6 @@ jobs:
       uses: actions/upload-artifact@v2.2.1
       with:
         name: image-filtering-microservice
-        path: ${{ env.working-dir }}/www/archive.zip
+        path: ${{ env.working-dir }}/www/Archive.zip
       env:
         CI: true

@@ -25,12 +25,12 @@ jobs:
     - name: Install dependencies
       run: npm install
       working-directory: ${{ env.working-dir }}
-    - name: Build The Image Filtering Microservice artifact
     - run: npm run build
       working-directory: ${{ env.working-dir }}
-    - uses: actions/upload-artifact@v2
+    - name: Upload The Image Filtering Microservice artifact
+      uses: actions/upload-artifact@v2.2.1
       with:
-        name: image-filtering-microservice ${{ matrix.node-version }}
-        path: ${{ github.workspace }}/www/archive.zip
+        name: image-filtering-microservice
+        path: ${{ env.working-dir }}/www/archive.zip
       env:
         CI: true

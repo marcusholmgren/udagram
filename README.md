@@ -3,6 +3,9 @@
 
 Udacity - Cloud Developer Nanodegree Program
 
+## Architectural decision are recorded
+Architectural Decision Records [ADR](./docs/README.md) for this microservice architecture are located in the `/docs` folder.
+
 Folder structure:
 * [image_filtering/](/image_filtering/README.md) - contains a image filtering service
 

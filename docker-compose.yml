@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  image_filtering:
+    build: ./image_filtering
+    image: image-service:latest
+
+    ports:
+      - "8082:8082"
+
+  restapi:
+    build: ./restapi
+    image: udagram-restapi:latest
+    depends_on:
+      - postgres
+    environment:
+      - USERNAME=postgres
+      - PASSWORD=password
+      - DATABASE=postgres
+      - HOST=postgres
+      - DIALECT=postgres
+    ports:
+      - "8080:8080"
+#    command: npm run dev
+#    volumes:
+#      - .:/app/
+#      - /app/node_modules
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres

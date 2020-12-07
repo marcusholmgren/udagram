@@ -6,7 +6,8 @@ Udacity - Cloud Developer Nanodegree Program
 ## Architectural decision are recorded
 Architectural Decision Records [ADR](./docs/README.md) for this microservice architecture are located in the `/docs` folder.
 
-Folder structure:
+Monorepo folder structure:
+* [restapi/](/restapi/README.md) - contains an REST API for the Udagram application
 * [image_filtering/](/image_filtering/README.md) - contains a image filtering service
 
 ## Run the server
@@ -22,3 +23,18 @@ Open a terminal and navigate into the root of your clone of this repository.
 ## Postman REST collection
 
 The `cloud-cdnd-c2-final.postman_collection.json` contains sample REST request for interacting with the image filtering microservice.
+
+
+## Docker Compose
+
+1. Start
+
+`docker-compose up -d`
+
+2. Stop
+
+`docker-compose stop`
+
+3. Remove containers
+
+`docker-compose rm`

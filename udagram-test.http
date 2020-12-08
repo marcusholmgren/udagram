@@ -52,6 +52,24 @@ GET http://localhost:8080/api/v0/feed
 
 GET http://localhost:8080/api/v0/feed/1
 
+###
+
+PATCH http://localhost:8080/api/v0/feed/1
+Content-Type: application/json
+
+[
+  { "op": "update", "variable": "caption", "value": "Hello" }
+]
+
+
+
+
+###
+
+[
+    { "op": "update", "variable": "caption", "value": "Marcus Holmgren" }
+]
+
 
 ###
 

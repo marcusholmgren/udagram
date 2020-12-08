@@ -22,18 +22,28 @@ Developer mode runs off the TypeScript source. Any saves will reset the server a
 
 ## HTTP Requests
 
-Get feed items
-```http
+Get feed items list
+```
 GET http://localhost:8080/api/v0/feed
 ```
 
 Get a feed item by id
-```http
+```
 GET http://localhost:8080/api/v0/feed/1
 ```
 
+Update an existing feed item
+```
+PATCH http://localhost:8080/api/v0/feed/1
+Content-Type: application/json
+
+[
+  { "op": "update", "variable": "caption", "value": "Hello" }
+]
+```
+
 Add a new feed item
-```http
+```
 POST http://localhost:8080/api/v0/feed
 Content-Type: application/json
 

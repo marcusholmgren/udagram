@@ -1,5 +1,5 @@
-import { Router, Request, Response } from 'express';
-import { FeedItem } from '../models/FeedItem';
+import { Request, Response, Router } from 'express';
+import { FeedItem, Patch } from '../models';
 import { requireAuth } from '../../users/routes/auth.router';
 import * as AWS from '../../../../aws';
 
@@ -26,7 +26,7 @@ router.get('/:id', requireAuth, (req: Request, res: Response) => {
       if (item) {
         res.send(item);
       } else {
-        res.status(404).send();
+        res.status(404).send({ message: `No item with id: ${id} could be found.` });
       }
     })
     .catch((error) => {
@@ -37,8 +37,37 @@ router.get('/:id', requireAuth, (req: Request, res: Response) => {
 
 // update a specific resource
 router.patch('/:id', requireAuth, async (req: Request, res: Response) => {
-  //@TODO try it yourself
-  res.send(500).send('not implemented');
+  const id = req.params.id;
+  const operations: Patch[] = req.body;
+
+  if (id) {
+    const item = await FeedItem.findByPk(id);
+    if (item) {
+      operations.forEach((x) => {
+        switch (x.op) {
+          case 'update':
+            if ('url' === x.variable && item.url !== x.value) {
+              item.url = x.value;
+            }
+            if ('caption' === x.variable && item.caption !== x.value) {
+              item.caption = x.value;
+            }
+        }
+      });
+
+      if (item.changed()) {
+        await item.save();
+        res.status(204).send();
+      } else {
+        res.status(200).send();
+      }
+    } else {
+      res.send(404).send({ message: `No item with id: ${id} could be found.` });
+    }
+  } else {
+    //@TODO try it yourself
+    res.send(400).send({ message: 'Id is required or malformed' });
+  }
 });
 
 // Get a signed url to put a new item in the bucket

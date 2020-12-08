@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git@github.com:marcusholmgren/udagram.git"
   },
-  "author": "",
+  "author": "Marcus Holmgren <marcus.holmgren1@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/marcusholmgren/udagram/issues"

@@ -22,6 +22,8 @@ Developer mode runs off the TypeScript source. Any saves will reset the server a
 
 ## HTTP Requests
 
+### /feed
+
 Get feed items list
 ```
 GET http://localhost:8080/api/v0/feed
@@ -52,3 +54,26 @@ Content-Type: application/json
   "url": "test.jpg"
 }
 ```
+
+Users route (returns nothing)
+```
+GET http://localhost:8080/api/v0/users
+```
+
+
+Get a user by email
+```
+GET http://localhost:8080/api/v0/users/<valid email>
+```
+
+Add a new user with email and password
+```
+POST http://localhost:8080/api/v0/users/auth
+Content-Type: application/json
+
+{
+  "email": "<valid email>",
+  "password": "abc123"
+}
+```
+s

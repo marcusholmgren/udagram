@@ -72,8 +72,24 @@ POST http://localhost:8080/api/v0/users/auth
 Content-Type: application/json
 
 {
-  "email": "<valid email>",
+  "email": "`<valid email>`",
   "password": "abc123"
 }
 ```
-s
+
+Login with user
+```
+POST http://localhost:8080/api/v0/users/auth/login
+Content-Type: application/json
+
+{
+  "email": "<valid email>",
+  "password": "abc123"
+}
+``
+
+Validate users JSON Web Token
+``
+GET http://localhost:8080/api/v0/users/auth/verification
+Authorization: Bearer <valid JWT>
+``

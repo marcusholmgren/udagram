@@ -1,0 +1,5 @@
+/node_modules
+/www
+Dockerfile
+Dockerfile.prod
+/deployment_screenshots

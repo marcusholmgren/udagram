@@ -10,11 +10,11 @@ on:
     branches: [ develop ]
 
 jobs:
-  backend-build:
+  image-filtering-build:
     name: Build The Image Filtering Microservice
     runs-on: ubuntu-latest
     env:
-      working-dir: ./backend
+      working-dir: ./image_filtering
 
     steps:
     - uses: actions/checkout@v2
@@ -31,6 +31,28 @@ jobs:
       uses: actions/upload-artifact@v2.2.1
       with:
         name: image-filtering-microservice
+        path: ${{ env.working-dir }}/www/**/*
+  restapi-build:
+    name: Build The REST API Microservice
+    runs-on: ubuntu-latest
+    env:
+      working-dir: ./restapi
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Client use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: Install dependencies
+      run: npm install
+      working-directory: ${{ env.working-dir }}
+    - run: npm run build
+      working-directory: ${{ env.working-dir }}
+    - name: Upload The Udagram REST API Microservice artifact
+      uses: actions/upload-artifact@v2.2.1
+      with:
+        name: udagram-restapi-microservice
         path: ${{ env.working-dir }}/www/**/*
       env:
         CI: true

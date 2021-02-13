@@ -7,9 +7,9 @@ services:
     ports:
       - "8082:8082"
 
-  restapi:
-    build: ./restapi
-    image: udagram-restapi:latest
+  feedapi:
+    build: ./feed-api
+    image: udagram-feed-api:latest
     depends_on:
       - postgres
     environment:
@@ -20,10 +20,20 @@ services:
       - DIALECT=postgres
     ports:
       - "8080:8080"
-#    command: npm run dev
-#    volumes:
-#      - .:/app/
-#      - /app/node_modules
+
+  userapi:
+    build: ./user-api
+    image: udagram-user-api:latest
+    depends_on:
+      - postgres
+    environment:
+      - USERNAME=postgres
+      - PASSWORD=password
+      - DATABASE=postgres
+      - HOST=postgres
+      - DIALECT=postgres
+    ports:
+      - "8081:8080"
 
   postgres:
     image: postgres:latest

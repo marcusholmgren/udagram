@@ -57,10 +57,10 @@ Content-Type: application/json
   "email": "<valid email>",
   "password": "abc123"
 }
-``
+```
 
 Validate users JSON Web Token
-``
+```
 GET http://localhost:8080/api/v0/users/auth/verification
 Authorization: Bearer <valid JWT>
 ``

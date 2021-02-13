@@ -64,3 +64,5 @@ run local docker image
 ```
 docker run -p 8100:80 udagram-client
 ```
+
+In your browser open url [http://localhost:8100](http://localhost:8100)

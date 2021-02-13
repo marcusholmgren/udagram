@@ -4,3 +4,6 @@ Architectural decision are recorded using [Michael Nygard's LADR format](http://
 
 ## Operating Model
 [OPM-1: Decision Tracking](./OPM-1-Decision-Tracking.md)
+
+## Architectural decision
+- [ADR-1-Kubernetes.md](./ADR-1-Kubernetes.md)

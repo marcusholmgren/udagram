@@ -21,12 +21,18 @@ services:
     image: udagram-feed-api:latest
     depends_on:
       - postgres
+    volumes:
+      - ~/.aws/:/root/.aws:ro
     environment:
       - USERNAME=postgres
       - PASSWORD=password
       - DATABASE=postgres
       - HOST=postgres
       - DIALECT=postgres
+      - JWT_SECRET=superunsecure
+      - AWS_REGION=eu-central-1
+      - AWS_PROFILE=default
+      - AWS_MEDIA_BUCKET=udagram-marcus-dev
 
   userapi:
     build: ./user-api

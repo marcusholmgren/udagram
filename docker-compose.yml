@@ -1,5 +1,14 @@
 version: "3.8"
 services:
+  udagramapi:
+    build: ./proxy-api
+    image: udagram-proxy-api:latest
+    depends_on:
+      - feedapi
+      - userapi
+    ports:
+      - "8080:8080"
+
   image_filtering:
     build: ./image_filtering
     image: image-service:latest
@@ -18,8 +27,6 @@ services:
       - DATABASE=postgres
       - HOST=postgres
       - DIALECT=postgres
-    ports:
-      - "8080:8080"
 
   userapi:
     build: ./user-api
@@ -32,8 +39,7 @@ services:
       - DATABASE=postgres
       - HOST=postgres
       - DIALECT=postgres
-    ports:
-      - "8081:8080"
+      - JWT_SECRET=superunsecure
 
   postgres:
     image: postgres:latest

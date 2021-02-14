@@ -7,6 +7,7 @@ Udacity - Cloud Developer Nanodegree Program
 Architectural Decision Records [ADR](./docs/README.md) for this microservice architecture are located in the `/docs` folder.
 
 Monorepo folder structure:
+* [proxy-api/](/proxy-api/README.md) - contains a reverse proxy for the REST API of the Udagram application
 * [feed-api/](/feed-api/README.md) - contains an REST API for the Udagram Feed application
 * [user-api/](/user-api/README.md) - contains an REST API for the Udagram Users application
 * [image_filtering/](/image_filtering/README.md) - contains an image filtering service

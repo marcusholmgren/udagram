@@ -1,6 +1,6 @@
 import { Request, Response, Router } from 'express';
 import { FeedItem, Patch } from '../models';
-import { requireAuth } from '../../users/routes/auth.router';
+import { requireAuth } from '../../users/middleware/auth';
 import * as AWS from '../../../../aws';
 
 const router: Router = Router();
@@ -74,6 +74,7 @@ router.patch('/:id', requireAuth, async (req: Request, res: Response) => {
 router.get('/signed-url/:fileName', requireAuth, async (req: Request, res: Response) => {
   let { fileName } = req.params;
   const url = AWS.getPutSignedUrl(fileName);
+  console.log(`Upload S3 for ${fileName} on url: ${url}`)
   res.status(201).send({ url: url });
 });
 
@@ -102,6 +103,7 @@ router.post('/', requireAuth, async (req: Request, res: Response) => {
   const saved_item = await item.save();
 
   saved_item.url = AWS.getGetSignedUrl(saved_item.url);
+  console.log(`Save item ${JSON.stringify(item)}`)
   res.status(201).send(saved_item);
 });
 

@@ -1,4 +1,4 @@
-# Udagram REST API
+# Udagram User REST API
 
 Udagram is a simple cloud application developed alongside the Udacity Cloud Engineering Nanodegree.
 It allows users to register and log into a web client, post photos to the feed, and process photos using an image filtering microservice.
@@ -22,38 +22,7 @@ Developer mode runs off the TypeScript source. Any saves will reset the server a
 
 ## HTTP Requests
 
-### /feed
-
-Get feed items list
-```
-GET http://localhost:8080/api/v0/feed
-```
-
-Get a feed item by id
-```
-GET http://localhost:8080/api/v0/feed/1
-```
-
-Update an existing feed item
-```
-PATCH http://localhost:8080/api/v0/feed/1
-Content-Type: application/json
-
-[
-  { "op": "update", "variable": "caption", "value": "Hello" }
-]
-```
-
-Add a new feed item
-```
-POST http://localhost:8080/api/v0/feed
-Content-Type: application/json
-
-{
-  "caption": "hej",
-  "url": "test.jpg"
-}
-```
+### /users
 
 Users route (returns nothing)
 ```
@@ -77,6 +46,8 @@ Content-Type: application/json
 }
 ```
 
+### /users/auth
+
 Login with user
 ```
 POST http://localhost:8080/api/v0/users/auth/login
@@ -86,10 +57,10 @@ Content-Type: application/json
   "email": "<valid email>",
   "password": "abc123"
 }
-``
+```
 
 Validate users JSON Web Token
-``
+```
 GET http://localhost:8080/api/v0/users/auth/verification
 Authorization: Bearer <valid JWT>
 ``

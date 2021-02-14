@@ -18,10 +18,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Client use Node.js 12.x
+    - name: Client use Node.js 15.x
       uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
+        node-version: '15.x'
     - name: Install dependencies
       run: npm install
       working-directory: ${{ env.working-dir }}
@@ -32,27 +32,51 @@ jobs:
       with:
         name: image-filtering-microservice
         path: ${{ env.working-dir }}/www/**/*
-  restapi-build:
-    name: Build The REST API Microservice
+
+  feed-api-build:
+    name: Build The Feed REST API Microservice
     runs-on: ubuntu-latest
     env:
-      working-dir: ./restapi
+      working-dir: ./feed-api
 
     steps:
     - uses: actions/checkout@v2
-    - name: Client use Node.js 12.x
+    - name: Client use Node.js 15.x
       uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
+        node-version: '15.x'
     - name: Install dependencies
       run: npm install
       working-directory: ${{ env.working-dir }}
     - run: npm run build
       working-directory: ${{ env.working-dir }}
-    - name: Upload The Udagram REST API Microservice artifact
+    - name: Upload The Udagram Feed REST API Microservice artifact
       uses: actions/upload-artifact@v2.2.1
       with:
-        name: udagram-restapi-microservice
+        name: udagram-feed-api-microservice
+        path: ${{ env.working-dir }}/www/**/*
+
+  user-api-build:
+    name: Build The User REST API Microservice
+    runs-on: ubuntu-latest
+    env:
+      working-dir: ./user-api
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Client use Node.js 15.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '15.x'
+    - name: Install dependencies
+      run: npm install
+      working-directory: ${{ env.working-dir }}
+    - run: npm run build
+      working-directory: ${{ env.working-dir }}
+    - name: Upload The Udagram User REST API Microservice artifact
+      uses: actions/upload-artifact@v2.2.1
+      with:
+        name: udagram-user-api-microservice
         path: ${{ env.working-dir }}/www/**/*
       env:
         CI: true

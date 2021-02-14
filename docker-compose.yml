@@ -1,5 +1,14 @@
 version: "3.8"
 services:
+  udagramapi:
+    build: ./proxy-api
+    image: udagram-proxy-api:latest
+    depends_on:
+      - feedapi
+      - userapi
+    ports:
+      - "8080:8080"
+
   image_filtering:
     build: ./image_filtering
     image: image-service:latest
@@ -7,9 +16,27 @@ services:
     ports:
       - "8082:8082"
 
-  restapi:
-    build: ./restapi
-    image: udagram-restapi:latest
+  feedapi:
+    build: ./feed-api
+    image: udagram-feed-api:latest
+    depends_on:
+      - postgres
+    volumes:
+      - ~/.aws/:/root/.aws:ro
+    environment:
+      - USERNAME=postgres
+      - PASSWORD=password
+      - DATABASE=postgres
+      - HOST=postgres
+      - DIALECT=postgres
+      - JWT_SECRET=superunsecure
+      - AWS_REGION=eu-central-1
+      - AWS_PROFILE=default
+      - AWS_MEDIA_BUCKET=udagram-marcus-dev
+
+  userapi:
+    build: ./user-api
+    image: udagram-user-api:latest
     depends_on:
       - postgres
     environment:
@@ -18,12 +45,7 @@ services:
       - DATABASE=postgres
       - HOST=postgres
       - DIALECT=postgres
-    ports:
-      - "8080:8080"
-#    command: npm run dev
-#    volumes:
-#      - .:/app/
-#      - /app/node_modules
+      - JWT_SECRET=superunsecure
 
   postgres:
     image: postgres:latest

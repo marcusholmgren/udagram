@@ -18,9 +18,12 @@ script:
   - docker tag udagram-user-api marcusholmgren/udagram-user-api:latest
   - docker build -t udagram-proxy-api ./proxy-api/.
   - docker tag udagram-proxy-api marcusholmgren/udagram-proxy-api:latest
+  - docker build -t udagram-client ./frontend/.
+  - docker tag udagram-client marcusholmgren/udagram-client:latest
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push marcusholmgren/udagram-feed-api
   - docker push marcusholmgren/udagram-user-api
   - docker push marcusholmgren/udagram-proxy-api
+  - docker push marcusholmgren/udagram-client

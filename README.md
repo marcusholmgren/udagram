@@ -47,15 +47,21 @@ Given that you have Docker installed with Docker Compose.
 
 1. Start
 
-`docker-compose up -d`
+```
+docker-compose up -d
+```
 
 2. Stop
 
-`docker-compose stop`
+```
+docker-compose stop
+```
 
 3. Remove containers
 
-`docker-compose rm`
+```
+docker-compose rm
+```
 
 
 ## Screenshots

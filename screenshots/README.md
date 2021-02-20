@@ -12,6 +12,12 @@
 
 ## Service Orchestration with Kubernetes
 
+
+- Kubernetes `kubectl get pods` output
+- Kubernetes `kubectl describe services` output
+- Kubernetes `kubectl describe hpa` output
+- Kubernetes `kubectl logs <your pod name>` output
+
 Screenshot of Kubernetes services shows a reverse proxy
 
 

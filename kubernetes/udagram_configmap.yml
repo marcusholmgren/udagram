@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  USERNAME: postgres
+  PASSWORD: password
+  DATABASE: postgres
+  HOST: 127.0.0.1
+  DIALECT: postgres
+  AWS_REGION: eu-central-1
+  AWS_PROFILE: default
+  AWS_MEDIA_BUCKET: udagram-marcus-dev
+  JWT_SECRET: superunsecure
+metadata:
+  name: udagram-config
+  labels:
+    app: udagram-config

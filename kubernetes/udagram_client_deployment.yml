@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udagram-client-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: udagram-client-app
+  template:
+    metadata:
+      labels:
+        app: udagram-client-app
+    spec:
+      containers:
+      - name: udagram-client-app
+        image: marcusholmgren/udagram-client
+        ports:
+          - containerPort: 80

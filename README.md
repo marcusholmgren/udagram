@@ -64,6 +64,20 @@ docker-compose rm
 ```
 
 
+## Kubernetes
+
+Change directory to the `kubernetes/` folder. `cd kubernetes`
+
+Then run the `deploy.sh` script to create all the Kubernetes pods from the Deployment and Service YAML files.
+```
+. ./deploy.sh
+```
+
+Delete all Kubernetes pods created with Deployment and Service YAML files.
+```
+. ./destroy.sh
+```
+
 ## Screenshots
 
 See the [screenshots](./screenshots/README.md) folder for images from my implementation of the project specification .

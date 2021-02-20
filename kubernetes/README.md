@@ -9,17 +9,25 @@ Kubernetes [cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 Ensure that you have AWS CLI installed and configured to use the [create-kubeconfig](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) command.
 
 ```
-aws eks --region us-east-1 update-kubeconfig Demo
+aws eks --region us-east-1 update-kubeconfig --name Demo
 ```
 
 
 ## Deploy
 
+The containers require environments variables to be set. One way to create the is to deploy the config map.
+
+```
+ kubectl create -f udagram_configmap.yml
+```
+Should respond with `configmap/udagram-config created` if successful.
+
+
 ```
 kubectl apply -f udagram_deployment.yml
 ```
 
-Should respond with `deployment.apps/udagram-app created` is successful.
+Should respond with `deployment.apps/udagram-app created` if successful.
 
 ```
 kubectl apply -f udagram_service.yml

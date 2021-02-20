@@ -14,6 +14,10 @@
 
 
 - Kubernetes `kubectl get pods` output
+![Some pods in AWS EKS](eks_deployed_pods_2021-02-20.png "Screenshot of some pods in AWS EKS")
+
+
+
 - Kubernetes `kubectl describe services` output
 - Kubernetes `kubectl describe hpa` output
 - Kubernetes `kubectl logs <your pod name>` output

@@ -1,22 +1,22 @@
 version: "3.8"
 services:
-  udagramapi:
+  udagram-proxy-api:
     build: ./proxy-api
     image: udagram-proxy-api:latest
     depends_on:
-      - feedapi
-      - userapi
+      - udagram-feed-api
+      - udagram-user-api
     ports:
       - "8080:8080"
 
-  image_filtering:
-    build: ./image_filtering
-    image: image-service:latest
+#  udagram_image_filtering:
+#    build: ./image_filtering
+#    image: image-service:latest
+#
+#    ports:
+#      - "8082:8082"
 
-    ports:
-      - "8082:8082"
-
-  feedapi:
+  udagram-feed-api:
     build: ./feed-api
     image: udagram-feed-api:latest
     depends_on:
@@ -34,7 +34,7 @@ services:
       - AWS_PROFILE=default
       - AWS_MEDIA_BUCKET=udagram-marcus-dev
 
-  userapi:
+  udagram-user-api:
     build: ./user-api
     image: udagram-user-api:latest
     depends_on:

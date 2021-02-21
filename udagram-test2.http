@@ -1,0 +1,163 @@
+GET http://localhost:8082
+
+###
+
+GET http://localhost:8082/filteredimage
+
+###
+
+GET http://localhost:8082/filteredimage?image_url=a
+
+
+###
+
+GET http://localhost:8082/filteredimage?image_url=https://www.brfimatra.se/undraw/undraw_Documents_re_isxv.png
+
+###
+
+GET http://localhost:8082/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/commons/b/bd/Golden_tabby_and_white_kitten_n01.jpg
+
+###
+
+GET http://UdagramMarcusDev-env-1.eba-9cmsxvm2.eu-central-1.elasticbeanstalk.com/filteredimage?image_url
+
+#=https://www.brfimatra.se/undraw/undraw_Documents_re_isxv.png
+
+###
+
+
+GET http://localhost:8080/api/v0/feed/signed-url/my-dotnet-bot-mod.png
+Authorization: jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmN1cy5ob2xtZ3JlbjFAZ21haWwuY29tIiwicGFzc3dvcmRfaGFzaCI6IiQyYiQxMCQvbUVEVnBxVE84S0ZSZ2xjVlI4NC91MEdJa3EvZVloVnE5Z2E5MWF6T0d6WEFpOW5oMFJuZSIsImNyZWF0ZWRBdCI6IjIwMjEtMDItMTRUMTI6MjI6MDEuMzUyWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDItMTRUMTI6MjI6MDEuMzUzWiIsImlhdCI6MTYxMzMwNTMyMX0.swnK_o1fzPjL1zrOe_LInLno1SRZYcINCwSVY_PCkdU
+
+###
+
+
+
+###
+
+POST http://localhost:8080/api/v0/feed
+Authorization: Bearer dummy
+Content-Type: application/json
+
+{
+"caption": "abc",
+  "url": "http://localhost:8080/cat.jpg"
+}
+
+
+###
+
+curl -X GET http://localhost:8082/filteredimage\?image_url\=https://upload.wikimedia.org/wikipedia/commons/b/bd/Golden_tabby_and_white_kitten_n01.jpg --output t ./filtered_image.jpg
+
+curl -X GET http://localhost:8082/filteredimage\?image_url\=https://upload.wikimedia.org/wikipedia/commons/b/bd/Golden_tabby_and_white_kitten_n01.jpg \
+ -o filtered_image.jpg
+
+
+
+###
+
+GET http://localhost:30080/api/v0/feed
+
+
+###
+
+GET http://localhost:30080/api/v0/feed/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmN1cy5ob2xtZ3JlbjFAZ21haWwuY29tIiwicGFzc3dvcmRfaGFzaCI6IiQyYiQxMCRWdnJUTkF4Ly5NL0ZyTVpBRzNOZU1PQmR4L0lTRmJVc01RaHYwSlJMZktUYWNHaVFwM2k2aSIsImNyZWF0ZWRBdCI6IjIwMjEtMDItMTNUMTY6NTc6MzUuMzIxWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDItMTNUMTY6NTc6MzUuMzIyWiIsImlhdCI6MTYxMzgxNzgwOX0.Y0-H8oAvYJB9ndf2l5LPcP2cv1zJcM-h3AQ2ju-bLpE
+
+
+###
+
+PATCH http://localhost:8080/api/v0/feed/1
+Content-Type: application/json
+
+[
+  { "op": "update", "variable": "caption", "value": "Hello" }
+]
+
+
+###
+
+GET http://localhost:30080/api/v0/users
+
+###
+
+GET http://localhost:30080/api/v0/users/marcus.holmgren1@gmail.com
+
+###
+
+POST http://localhost:8080/api/v0/users/auth
+Content-Type: application/json
+
+{
+  "email": "marcus.holmgren1@gmail.com",
+  "password": "abc123"
+}
+
+
+###
+
+POST http://localhost:30080/api/v0/users/auth/login
+Content-Type: application/json
+
+{
+  "email": "marcus.holmgren1@gmail.com",
+  "password": "abc123"
+}
+
+###
+
+GET http://localhost:8080/api/v0/users/auth/verification
+Authorization: Bearer ey1JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmN1cy5ob2xtZ3JlbjFAZ21haWwuY29tIiwicGFzc3dvcmRfaGFzaCI6IiQyYiQxMCR3bWZycmZNSXVoNkd6V2JEb2Q3VmouRWptaHVKMmcxTmpnSU5rSUg3azk0QUZ6anNhUjNDZSIsImNyZWF0ZWRBdCI6IjIwMjAtMTItMDlUMTY6NTI6NDMuNjQ4WiIsInVwZGF0ZWRBdCI6IjIwMjAtMTItMDlUMTY6NTI6NDMuNjQ4WiIsImlhdCI6MTYwNzUzNDA2M30.Ui9incFOf2AaLZqhYBiN_iHd6IyfMnfELn5YyGnveQI
+
+###
+
+POST http://localhost:8080/api/v0/feed
+Content-Type: application/json
+
+{
+  "caption": "hej",
+  "url": "test.jpg"
+}
+
+###
+
+GET https://fsts.skandia.se/as/authorization.oauth2
+Client-Id: abc123
+
+###
+
+# curl -X GET --location "https://fsts.skandia.se/as/authorization.oauth2"
+#    -H "Client-Id: abc123"
+GET https://fsts.skandia.se/as/authorization.oauth2
+Client-Id: abc123
+
+###
+
+GET http://localhost:8080/api/v0/users/auth
+
+###
+
+# POST http://localhost:8080/api/v0/users/auth/
+POST http://a4f2dbc74242b4522a4e67025dec3089-2126402921.eu-central-1.elb.amazonaws.com:8080/api/v0/users/auth
+Content-Type: application/json
+
+{
+  "email": "marcus.holmgren1@gmail.com",
+  "password": "abc123"
+}
+
+###
+
+GET http://localhost:8080/api/v0/feed/signed-url/my-dotnet-bot-mod.png
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmN1cy5ob2xtZ3JlbjFAZ21haWwuY29tIiwicGFzc3dvcmRfaGFzaCI6IiQyYiQxMCRQd25Ia3EyVkowRmFyVlZBOWRjWjFPSS5mWUE3UVhMbERiRFNsVHJkbkVwcXpyWnViQTVuMiIsImNyZWF0ZWRBdCI6IjIwMjEtMDItMTRUMTA6NDM6NTYuMTgxWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDItMTRUMTA6NDM6NTYuMTgyWiIsImlhdCI6MTYxMzI5OTQzNn0.PlpEAlvnRkQRl1ak4rdObR2cSQALWoS7Rja99_GdhQc
+Content-Type: application/json
+
+###
+
+
+#GET http://a4f2dbc74242b4522a4e67025dec3089-2126402921.eu-central-1.elb.amazonaws.com:8080/api/v0/users/auth
+GET http://a4f2dbc74242b4522a4e67025dec3089-2126402921.eu-central-1.elb.amazonaws.com:8080/api/v0/feed/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmN1cy5ob2xtZ3JlbjFAZ21haWwuY29tIiwicGFzc3dvcmRfaGFzaCI6IiQyYiQxMCRQd25Ia3EyVkowRmFyVlZBOWRjWjFPSS5mWUE3UVhMbERiRFNsVHJkbkVwcXpyWnViQTVuMiIsImNyZWF0ZWRBdCI6IjIwMjEtMDItMTRUMTA6NDM6NTYuMTgxWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDItMTRUMTA6NDM6NTYuMTgyWiIsImlhdCI6MTYxMzI5OTQzNn0.PlpEAlvnRkQRl1ak4rdObR2cSQALWoS7Rja99_GdhQc
+
+
+

@@ -1,0 +1,13 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: udagram-user-api
+spec:
+  containers:
+    - name: udagram-user-api
+      image: marcusholmgren/udagram-user-api
+      envFrom:
+        - configMapRef:
+            name: udagram-config
+      ports:
+        - containerPort: 8080

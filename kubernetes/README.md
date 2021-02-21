@@ -18,7 +18,7 @@ aws eks --region us-east-1 update-kubeconfig --name Demo
 The containers require environments variables to be set. One way to create the is to deploy the config map.
 
 ```
- kubectl create -f udagram_configmap.yml
+kubectl create -f udagram_configmap.yml
 ```
 Should respond with `configmap/udagram-config created` if successful.
 
@@ -120,4 +120,10 @@ Read from .env file
 
 ```
 kubectl create configmap udagram-config --from-env-file ../.env
+```
+
+## Horizontal Pod Autoscaler
+
+```
+kubectl autoscale deployment udagram-feed-api --cpu-percent=50 --min=1 --max=10
 ```
